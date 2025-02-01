@@ -1,12 +1,8 @@
 
 
-const contact = document.querySelector('#contact')
+const h2 = document.querySelector('h2')
+setTimeout(() => {
+    h2.textContent = 'and Salutations'
+}, 3000)
 
-contact.addEventListener('mouseover', () => {
-    contact.parentElement.style.backgroundColor = 'lightblue'
-    //contact.closest('nav').style.backgroundColor = 'lightblue'
-})
-contact.addEventListener('mouseleave', () => {
-    contact.parentElement.style.backgroundColor = ''
-    //contact.closest('nav').style.backgroundColor = ''
-})
+alert('Welcome to my website!')
