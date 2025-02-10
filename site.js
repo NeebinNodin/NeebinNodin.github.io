@@ -30,9 +30,10 @@ if (welcome) {
 
 ///// Put this at the end. Seemed to be the better placement since it is last in the code. Or might have errors if placed elsewhere.
 const h2 = document.querySelector('h2')
-if (h2){
 setTimeout(() => {
     h2.textContent = welcome.textContent
 }, 3000)}
 
 })// Placed const h2 inside of the DOMContentLoaded since it is the last thing to be executed and didn't think of it until I ask CoPilot some general questions. Had it outside. 
+
+// Added localStorage for Assignment 4. Ran into problems with page not loading correctly. I got the localStorage to work, but the dyamanic content was fully working. I commented out the div the welcome id, thinking it wasn't needed. Spent some time figuring it out and was very confused. 
