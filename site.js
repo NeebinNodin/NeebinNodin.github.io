@@ -1,7 +1,7 @@
-alert('Welcome to my website!')
+//alert('Welcome to my website!')
 const key = "It's a secret to everybody."
-const message = "A Link to the Past..."
-localStorage.setItem(key, message)
+const secret = "A Link to the Past..."
+localStorage.setItem(key, secret) 
 
 // Added for Assignment 3. Alot of experimenting with different parameters/values/properties/or whatever the proper term is.
 document.addEventListener('DOMContentLoaded', function() {
@@ -23,13 +23,16 @@ if (isMorning) {
 }
 
 const welcome = document.getElementById('welcome')
-welcome.textContent = message
+if (welcome) {
+    welcome.textContent = message
+}
 
 
 ///// Put this at the end. Seemed to be the better placement since it is last in the code. Or might have errors if placed elsewhere.
 const h2 = document.querySelector('h2')
+if (h2){
 setTimeout(() => {
     h2.textContent = welcome.textContent
-}, 3000)
+}, 3000)}
 
 })// Placed const h2 inside of the DOMContentLoaded since it is the last thing to be executed and didn't think of it until I ask CoPilot some general questions. Had it outside. 
