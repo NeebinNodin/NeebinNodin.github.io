@@ -1,5 +1,7 @@
-
 alert('Welcome to my website!')
+const key = "It's a secret to everybody."
+const message = "A Link to the Past..."
+localStorage.setItem(key, message)
 
 // Added for Assignment 3. Alot of experimenting with different parameters/values/properties/or whatever the proper term is.
 document.addEventListener('DOMContentLoaded', function() {
