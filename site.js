@@ -32,7 +32,7 @@ if (welcome) {
 const h2 = document.querySelector('h2')
 setTimeout(() => {
     h2.textContent = welcome.textContent
-}, 3000)}
+}, 3000)
 
 })// Placed const h2 inside of the DOMContentLoaded since it is the last thing to be executed and didn't think of it until I ask CoPilot some general questions. Had it outside. 
 
