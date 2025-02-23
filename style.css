@@ -98,3 +98,29 @@ footer a:hover {
 	color: #61bb8e;
 	background-color: rgba(0, 0, 0, 0.5);
 }
+
+#carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-height: 300px;
+    overflow: hidden;
+    gap: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+#carousel img {
+    max-height: 300px;
+    aspect-ratio: auto 300 / 400;
+    border-radius: 10px;
+}
+
+#buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
