@@ -1,14 +1,14 @@
 //alert('Welcome to my website!')
 const key = "It's a secret to everybody."
 const secret = "A Link to the Past..."
-localStorage.setItem(key, secret) 
+localStorage.setItem(key, secret)
 
 // Added for Assignment 3. Alot of experimenting with different parameters/values/properties/or whatever the proper term is.
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
     const hours = new Date().getHours()
 
-    const isMorning = hours >= 4 && hours <12
+    const isMorning = hours >= 4 && hours < 12
     const isAfternoon = hours >= 12 && hours < 17
     const isEvening = hours >= 17 || hours < 4
 
@@ -74,4 +74,33 @@ prevBtn.addEventListener('click', () => {
 setInterval(() => {
     currentImage++
     showImages()
-},5000)
+}, 5000)
+
+// Added for Assignment 6.
+
+const todoList = document.getElementById('todo-list')
+const input = document.getElementById('new-todo')
+const addBtn = document.getElementById('add-todo')
+
+const todos = JSON.parse(localStorage.getItem('todo-list')) || []
+
+const renderTodos = () => {
+    todoList.innerHTML = ''
+
+    todos.forEach(todo => {
+        const li = document.createElement('li')
+        li.textContent = todo.text
+        li.classList.add('li')
+    })
+}
+
+addBtn.addEventListener('click', () => {
+    if (input.value.trim() === '') return
+    todos.push({ text: input.value, completed: false })
+    localStorage.setItem('todo-list', JSON.stringify(todos))
+    renderTodos()
+    input.value = ''
+    
+})
+
+document.addEventListener('DOMContentLoaded', renderTodos)
