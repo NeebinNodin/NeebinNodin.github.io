@@ -78,29 +78,47 @@ setInterval(() => {
 
 // Added for Assignment 6.
 
+const todos = JSON.parse(localStorage.getItem('todo-list')) || []
 const todoList = document.getElementById('todo-list')
 const input = document.getElementById('new-todo')
-const addBtn = document.getElementById('add-todo')
-
-const todos = JSON.parse(localStorage.getItem('todo-list')) || []
+const addButton = document.getElementById('add-todo')
 
 const renderTodos = () => {
     todoList.innerHTML = ''
-
-    todos.forEach(todo => {
+    todos.forEach((todo, index) => {
         const li = document.createElement('li')
+        // create a checkbox
+        const checkbox = document.createElement('input')
+        checkbox.type = 'checkbox'
+        checkbox.checked = todo.completed
+        checkbox.addEventListener('change', () => {
+            todo.completed = checkbox.checked
+            localStorage.setItem('todo-list', JSON.stringify(todos))
+        })
+        //create a delete button
+        const deleteButton = document.createElement('button')
+        deleteButton.textContent = 'Delete'
+        deleteButton.addEventListener('click', () => {
+            todos.splice(index, 1)
+            localStorage.setItem('todo-list', JSON.stringify(todos))
+            renderTodos()
+        })
+        // append checkbox and delete button to the list item
+        li.append(checkbox)
+        li.append(document.createTextNode(todo.text))
         li.textContent = todo.text
-        li.classList.add('li')
+        li.append(deleteButton)
+        todoList.append(li)
     })
 }
 
-addBtn.addEventListener('click', () => {
-    if (input.value.trim() === '') return
-    todos.push({ text: input.value, completed: false })
-    localStorage.setItem('todo-list', JSON.stringify(todos))
-    renderTodos()
-    input.value = ''
-    
-})
+renderTodos()
 
-document.addEventListener('DOMContentLoaded', renderTodos)
+addButton.addEventListener('click', () => {
+    if (input.value !== '') {
+        todos.push({ text: input.value, completed: false })
+        localStorage.setItem('todo-list', JSON.stringify(todos))
+        input.value = ''
+        renderTodos()
+    }
+})
