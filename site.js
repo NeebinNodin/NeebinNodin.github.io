@@ -106,7 +106,7 @@ const renderTodos = () => {
         // append checkbox and delete button to the list item
         li.append(checkbox)
         li.append(document.createTextNode(todo.text))
-        li.textContent = todo.text
+        //li.textContent = todo.text
         li.append(deleteButton)
         todoList.append(li)
     })
