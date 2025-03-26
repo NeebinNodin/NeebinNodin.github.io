@@ -122,3 +122,32 @@ addButton.addEventListener('click', () => {
         renderTodos()
     }
 })
+
+    // Added for assignment 7
+    
+        //const https = require('https')
+
+        const pokeImg = document.getElementById('poke-img')
+
+        const getRandomPokemon = async () => {
+            const url = 'https://pokeapi.co/api/v2/pokemon/' + Math.floor(Math.random() * 150)
+            const response = await fetch(url)
+            const json = await response.json()
+            return json
+        }
+        
+        const renderPokemon = pokemon => {
+            pokeImg.innerHTML = ''
+            const img = document.createElement('img')
+            // img.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png"
+            // img.alt = "Clefairy"
+            img.src = pokemon.sprites.front_default
+            img.alt = pokemon.name
+            pokeImg.append(img)
+        }
+
+        getRandomPokemon().then(renderPokemon)
+
+        
+
+    
